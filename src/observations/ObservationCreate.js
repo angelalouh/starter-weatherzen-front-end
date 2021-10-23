@@ -33,7 +33,7 @@ function ObservationCreate() {
     <main>
       <h1 className="mb-3">Create Observation</h1>
       <form onSubmit={submitHandler} className="mb-4">
-        <div className="row, mb-3">
+        <div className="row mb-3">
           <div className="col-6 form-group">
             <label className="form-label" htmlFor="latitude">
               Latitude
@@ -43,8 +43,8 @@ function ObservationCreate() {
               id="latitude"
               name="latitude"
               type="number"
-              min="90"
-              max="-90"
+              min="-90"
+              max="90"
               value={observation.latitude}
               onChange={changeHandler}
               require={true}
