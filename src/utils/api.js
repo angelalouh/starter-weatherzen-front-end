@@ -46,25 +46,41 @@ async function fetchJson(url, options) {
 }
 
 // Simulating API call using a local array to store the observations
-const observations = [];
+  // const observations = [];
 
-function nextId() {
-  const uint32 = window.crypto.getRandomValues(new Uint32Array(1))[0];
-  return uint32.toString(16);
-}
+  // function nextId() {
+  //   const uint32 = window.crypto.getRandomValues(new Uint32Array(1))[0];
+  //   return uint32.toString(16);
+  // }
 
 export async function createObservation(observation, signal) {
-  const now = new Date().toISOString();
-  const newObservation = {
-    ...observation,
-    observation_id: nextId(),
-    created_at: now,
-    updated_at: now,
+  // Simulated API calls locally:
+    // const now = new Date().toISOString();
+    // const newObservation = {
+    //   ...observation,
+    //   observation_id: nextId(),
+    //   created_at: now,
+    //   updated_at: now,
+    // };
+    // observations.push(newObservation);
+    // return newObservation;
+  const url = `${API_BASE_URL}/observations`;
+  const options = {
+    method: "POST",
+    headers,
+    body: JSON.stringify({ data: observation }),
+    signal,
   };
-  observations.push(newObservation);
-  return newObservation;
+  return await fetchJson(url, options);
 }
 
 export async function listObservations(signal) {
-  return observations;
+  // When simulating API call locally:
+    // return observations;
+  const url = `${API_BASE_URL}/observations`;
+  const options = {
+    headers,
+    signal,
+  };
+  return await fetchJson(url, options);
 }
